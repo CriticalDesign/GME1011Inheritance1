@@ -27,6 +27,11 @@ namespace GME1011Inheritance1
         }
 
         public int GetArrows() { return _arrows; }
-        public override int DealDamage() { _arrows--; return _rng.Next(10, 16); }
+        public override int DealDamage() { Console.WriteLine("How feathery!!"); _arrows--; return _rng.Next(10, 16); }
+
+        public override string ToString()
+        {
+            return "Archer[" + base.ToString() + ", " + _arrows + "]";
+        }
     }
 }

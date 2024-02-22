@@ -26,11 +26,17 @@ namespace GME1011Inheritance1
             _rng = new Random();
         }
 
+
+        public void Heal(int health) { _health += health;  }
         public int GetHealth() { return _health; }
         public string GetName() { return _name; }
 
         public void TakeDamage(int damage) { _health -= damage; }
 
-        public virtual int DealDamage() { return _rng.Next(5,15); }
+        public virtual int DealDamage() { Console.WriteLine("How heroic!!"); return _rng.Next(5,15); }
+        public override string ToString()
+        {
+            return "Hero[" + _name + ", " + _health + "]";
+        }
     }
 }

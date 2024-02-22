@@ -27,8 +27,12 @@ namespace GME1011Inheritance1
         }
 
         public int GetMana() { return _mana; }
-        public override int DealDamage() { _mana--; return _rng.Next(20,36); }
-        
+        public override int DealDamage() { Console.WriteLine("How magical!!"); _mana--; return _rng.Next(20,36); }
 
+
+        public override string ToString()
+        {
+            return "Magician[" + base.ToString() + ", " + _mana + "]";
+        }
     }
 }

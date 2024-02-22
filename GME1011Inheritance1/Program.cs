@@ -1,44 +1,64 @@
-﻿namespace GME1011Inheritance1
+﻿using System.Collections.Generic;
+
+namespace GME1011Inheritance1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Hero hero1 = new Hero(126, "Apple");
 
-            Console.WriteLine("Name:" + hero1.GetName());
-            Console.WriteLine("Health:" + hero1.GetHealth());
+            List<Hero> party = new List<Hero>();
 
-            hero1.TakeDamage(26);
-            Console.WriteLine("Health:" + hero1.GetHealth());
-            Console.WriteLine("Hero does " + hero1.DealDamage() + " damage.");
+            party.Add(new Hero(100, "Arthur"));
+            party.Add(new Brute());
+            party.Add(new Brute());
+            party.Add(new Brute());
+            party.Add(new Magician(50, "Merlin", 10));
+            party.Add(new Archer(110, "Galahad", 20));
 
-            Console.WriteLine("---------------------");
+            party[0].Heal(10);
+            party[1].TakeDamage(25);
+            string name = party[2].GetName();
+            
+            foreach (Hero tempHero in party)
+            {
+                Console.WriteLine(tempHero.GetName() + " does " + tempHero.DealDamage() + " damage.");
+            }
+
+            int arrowStock = 0;
+            int manaStock = 0;
+            foreach (Hero temphero in party)
+            {
+                if (temphero.GetType() == typeof(Archer))
+                {
+                    Console.WriteLine(temphero.GetName() + " has " + ((Archer)temphero).GetArrows() + " arrows.");
+                    arrowStock += ((Archer)temphero).GetArrows();
+                }
+                if (temphero.GetType() == typeof(Magician))
+                    manaStock += ((Magician)temphero).GetMana();
+            }
+            Console.WriteLine("Arrows: " + arrowStock);
+            Console.WriteLine("Mana: " + manaStock);
+
+            foreach (Hero temphero in party)
+            {
+                Console.WriteLine(temphero);
+            }
 
 
-            Magician hero2 = new Magician();
-
-            Console.WriteLine("Name:" + hero2.GetName());
-            Console.WriteLine("Health:" + hero2.GetHealth());
-
-            hero2.TakeDamage(26);
-            Console.WriteLine("Health:" + hero2.GetHealth());
-            Console.WriteLine("Magician does " + hero2.DealDamage() + " damage.");
-            Console.WriteLine("Magician has " + hero2.GetMana() + " mana.");
 
 
-            Console.WriteLine("---------------------");
 
 
-            Archer hero3 = new Archer(80, "Archer", 15);
 
-            Console.WriteLine("Name:" + hero3.GetName());
-            Console.WriteLine("Health:" + hero3.GetHealth());
 
-            hero3.TakeDamage(26);
-            Console.WriteLine("Health:" + hero3.GetHealth());
-            Console.WriteLine("Archer does " + hero3.DealDamage() + " damage.");
-            Console.WriteLine("Archer has " + hero3.GetArrows() + " arrows.");
+
+
+
+
+
+
+
 
 
 
